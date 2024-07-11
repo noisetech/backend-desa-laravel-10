@@ -98,9 +98,9 @@ class PostController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Post $posts)
     {
-        $posts = Post::find($id);
+        $posts = Post::find($posts);
 
         if ($posts) {
             return response()->json([
@@ -178,9 +178,9 @@ class PostController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(Post $posts)
     {
-        $posts = Post::find($id);
+        $posts->delete();
 
         if ($posts) {
             return response()->json([

@@ -85,12 +85,12 @@ class CategoryController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Category $categories)
     {
-        $category = Category::find($id);
+        $categories->delete();
 
-        $category->delete();
-
-        return new CategoryResource(true, 'Category deleted', null);
+        if ($categories) {
+            return new CategoryResource(true, 'Category deleted', null);
+        }
     }
 }
